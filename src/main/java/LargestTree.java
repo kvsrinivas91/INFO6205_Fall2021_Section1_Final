@@ -11,20 +11,19 @@ class LargestTree {
 
         for (int i = 0; i < adj[u].size(); i++)
             if (!visited.get(adj[u].get(i))) {
-                sizeNum += DFS(adj[u].get(i),
-                        adj, visited);
+                sizeNum += DFS(adj[u].get(i), adj, visited);
             }
 
         return sizeNum;
     }
 
     public int largestTree(LinkedList<Integer> adj[], int V) {
-        Vector<Boolean> visited = new Vector<>();
-        for (int i = 0; i < V; i++) visited.add(false);
+        Vector<Boolean> visitedVector = new Vector<>();
+        for (int i = 0; i < V; i++) visitedVector.add(false);
         int result = 0;
         for (int j = 0; j < V; j++) {
-            if (!visited.get(j)) {
-                result = Math.max(result, DFS(j, adj, visited));
+            if (!visitedVector.get(j)) {
+                result = Math.max(result, DFS(j, adj, visitedVector));
             }
         }
         return result;
